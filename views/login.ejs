@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — IntegriRH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: "#2e7d32", // verde institucional
+              beige: "#f5f2e7"  // bege claro
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-gradient-to-br from-brand-green/90 to-brand-beige">
+  <main class="relative z-10 min-h-full flex items-center justify-center p-6">
+    <div class="w-full max-w-md">
+      <!-- Card -->
+      <div class="bg-white shadow-2xl rounded-2xl border border-brand-beige">
+        <!-- Cabeçalho -->
+        <div class="p-6 border-b border-brand-beige">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-green flex items-center justify-center text-white font-bold">IR</div>
+            <div>
+              <h1 class="text-xl font-semibold text-brand-green">IntegriRH</h1>
+              <p class="text-sm text-slate-600">Acesse para continuar</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área de erro -->
+        <div id="errorBox" class="hidden mx-6 mt-4 rounded-lg border border-red-200 bg-red-50 text-red-800 text-sm p-3">
+        </div>
+
+        <!-- Formulário -->
+        <form id="loginForm" action="/dashboard" method="get" class="p-6 space-y-5">
+          <!-- Usuário -->
+          <div>
+            <label for="username" class="block text-sm font-medium text-slate-700 mb-1">Usuário (e-mail ou CPF)</label>
+            <input id="username" name="username" type="text" autocomplete="username"
+                   class="w-full rounded-lg border-slate-300 focus:border-brand-green focus:ring-brand-green"
+                   placeholder="seu.email@empresa.com" required />
+          </div>
+
+          <!-- Senha -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Senha</label>
+            <div class="relative">
+              <input id="password" name="password" type="password" autocomplete="current-password"
+                     class="w-full pr-12 rounded-lg border-slate-300 focus:border-brand-green focus:ring-brand-green"
+                     placeholder="••••••••" required />
+              <button type="button" id="togglePassword"
+                      class="absolute inset-y-0 right-0 px-3 flex items-center text-slate-500 hover:text-brand-green"
+                      aria-label="Mostrar ou ocultar senha">
+                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                        d="M2.25 12s3.75-7.5 9.75-7.5S21.75 12 21.75 12s-3.75 7.5-9.75 7.5S2.25 12 2.25 12z" />
+                  <circle cx="12" cy="12" r="3.25" stroke-width="1.8" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Ações secundárias -->
+          <div class="flex items-center justify-between">
+            <label class="inline-flex items-center gap-2 text-sm text-slate-600">
+              <input id="remember" name="remember" type="checkbox"
+                     class="rounded border-slate-300 text-brand-green focus:ring-brand-green" />
+              Lembrar-me
+            </label>
+            <a href="#" class="text-sm text-brand-green hover:underline">Esqueci minha senha</a>
+          </div>
+
+          <!-- Botão principal -->
+          <button id="submitBtn" type="submit"
+                  class="w-full inline-flex items-center justify-center gap-2 bg-brand-green text-white font-medium py-2.5 rounded-lg hover:bg-green-800 focus:ring-4 focus:ring-brand-green/40 disabled:opacity-60">
+            <svg id="spinner" class="hidden h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4A4 4 0 004 12z"></path>
+            </svg>
+            <span>Entrar</span>
+          </button>
+
+          <!-- Rodapé do card -->
+          <p class="text-xs text-center text-slate-500">
+            Ao entrar você concorda com os <a href="#" class="underline hover:no-underline">Termos</a> &amp; <a href="#" class="underline hover:no-underline">Política de Privacidade</a>.
+          </p>
+        </form>
+      </div>
+
+      <p class="mt-4 text-center text-xs text-slate-600">
+        Ambiente de demonstração — login redireciona para o dashboard.
+      </p>
+    </div>
+  </main>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>

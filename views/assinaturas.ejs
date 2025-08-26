@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Assinaturas — IntegriRH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: "#2e7d32", beige: "#f5f2e7" }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-full bg-brand-beige">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand-beige">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-brand-green text-white font-bold grid place-items-center">IR</div>
+        <div>
+          <h1 class="text-lg font-semibold text-brand-green leading-none">IntegriRH</h1>
+          <p class="text-xs text-slate-500 leading-none">Fluxo de Assinaturas</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-3">
+        <a href="/dashboard" class="text-sm text-slate-700 hover:text-brand-green">Início</a>
+        <a href="/cadastro" class="text-sm text-slate-700 hover:text-brand-green">Cadastro</a>
+        <a href="/laudos" class="text-sm text-slate-700 hover:text-brand-green">Laudos</a>
+        <a href="/assinaturas" class="text-sm text-brand-green font-medium">Assinaturas</a>
+        <a href="/pessoal" class="text-sm text-slate-700 hover:text-brand-green">Pessoal</a>
+      </nav>
+      <div class="w-9 h-9 rounded-full bg-brand-green/10 grid place-items-center text-brand-green font-semibold">JV</div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <!-- Kanban simples (visual) -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <!-- Colaborador -->
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-700">Colaborador</h3>
+        <div class="mt-3 space-y-2">
+          <div class="p-3 rounded-lg border border-brand-beige">#101 • Ana Souza</div>
+          <div class="p-3 rounded-lg border border-brand-beige">#104 • Diego Araújo</div>
+        </div>
+      </div>
+
+      <!-- Médico -->
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-700">Médico</h3>
+        <div class="mt-3 space-y-2">
+          <div class="p-3 rounded-lg border border-brand-beige bg-amber-50">#098 • Bruno Lima</div>
+        </div>
+      </div>
+
+      <!-- Superintendente -->
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-700">Superintendente</h3>
+        <div class="mt-3 space-y-2">
+          <div class="p-3 rounded-lg border border-brand-beige">#099 • Carla Nunes</div>
+        </div>
+      </div>
+
+      <!-- Divisão de Pessoal -->
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-700">Divisão de Pessoal</h3>
+        <div class="mt-3 space-y-2">
+          <div class="p-3 rounded-lg border border-brand-beige bg-green-50">#090 • Bruno Lima</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabela detalhada -->
+    <section class="mt-6 bg-white rounded-xl border border-brand-beige p-4 shadow-sm overflow-hidden">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-slate-700">Detalhes</h3>
+        <div class="flex gap-2">
+          <button class="px-3 py-1.5 rounded-md border border-brand-beige hover:bg-brand-beige/60">Exportar</button>
+          <button class="px-3 py-1.5 rounded-md bg-brand-green text-white hover:bg-green-800">Atualizar (mock)</button>
+        </div>
+      </div>
+
+      <div class="mt-3 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="text-left bg-brand-beige">
+              <th class="px-3 py-2">#</th>
+              <th class="px-3 py-2">Colaborador</th>
+              <th class="px-3 py-2">Etapa</th>
+              <th class="px-3 py-2">Última atualização</th>
+              <th class="px-3 py-2 text-right">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-brand-beige">
+              <td class="px-3 py-2">101</td>
+              <td class="px-3 py-2">Ana Souza</td>
+              <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs bg-blue-100 text-blue-800">Médico</span></td>
+              <td class="px-3 py-2">25/08/2025 14:12</td>
+              <td class="px-3 py-2 text-right">
+                <button class="text-brand-green hover:underline">Ver</button>
+              </td>
+            </tr>
+            <tr class="border-t border-brand-beige">
+              <td class="px-3 py-2">099</td>
+              <td class="px-3 py-2">Carla Nunes</td>
+              <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs bg-indigo-100 text-indigo-800">Superint.</span></td>
+              <td class="px-3 py-2">24/08/2025 09:30</td>
+              <td class="px-3 py-2 text-right">
+                <button class="text-brand-green hover:underline">Ver</button>
+              </td>
+            </tr>
+            <tr class="border-t border-brand-beige">
+              <td class="px-3 py-2">090</td>
+              <td class="px-3 py-2">Bruno Lima</td>
+              <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs bg-green-100 text-green-800">DP</span></td>
+              <td class="px-3 py-2">23/08/2025 16:05</td>
+              <td class="px-3 py-2 text-right">
+                <button class="text-brand-green hover:underline">Ver</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

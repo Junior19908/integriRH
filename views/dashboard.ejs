@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — IntegriRH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: "#2e7d32",
+              beige: "#f5f2e7"
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-full bg-brand-beige">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand-beige">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-brand-green text-white font-bold grid place-items-center">IR</div>
+        <div>
+          <h1 class="text-lg font-semibold text-brand-green leading-none">IntegriRH</h1>
+          <p class="text-xs text-slate-500 leading-none">Dashboard</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-3">
+        <a href="/dashboard" class="text-sm text-slate-700 hover:text-brand-green">Início</a>
+        <a href="/cadastro" class="text-sm text-slate-700 hover:text-brand-green">Cadastro</a>
+        <a href="/laudos" class="text-sm text-slate-700 hover:text-brand-green">Laudos</a>
+        <a href="/assinaturas" class="text-sm text-slate-700 hover:text-brand-green">Assinaturas</a>
+        <a href="/pessoal" class="text-sm text-slate-700 hover:text-brand-green">Pessoal</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button class="hidden md:inline-flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md border-brand-beige hover:bg-brand-beige/60">
+          📄 Relatórios
+        </button>
+        <div class="w-9 h-9 rounded-full bg-brand-green/10 grid place-items-center text-brand-green font-semibold">JV</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <!-- Barra de ações / busca -->
+    <section class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+      <form class="flex-1">
+        <label class="sr-only" for="q">Buscar</label>
+        <div class="relative">
+          <input id="q" name="q" type="search" placeholder="Buscar colaborador, CPF, setor..."
+                 class="w-full rounded-lg border border-brand-beige bg-white px-4 py-2.5 pr-12 focus:outline-none focus:ring-2 focus:ring-brand-green/30" />
+          <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-brand-green hover:opacity-80">🔎</button>
+        </div>
+      </form>
+      <div class="flex gap-2">
+        <a href="/cadastro" class="inline-flex items-center gap-2 bg-brand-green text-white px-4 py-2 rounded-lg hover:bg-green-800">＋ Novo Cadastro</a>
+        <a href="/assinaturas" class="inline-flex items-center gap-2 border border-brand-beige bg-white px-4 py-2 rounded-lg hover:bg-brand-beige/60">✔ Fluxo</a>
+      </div>
+    </section>
+
+    <!-- KPIs -->
+    <section class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <p class="text-xs text-slate-500">Cadastros Hoje</p>
+        <p class="mt-1 text-2xl font-semibold text-brand-green" id="kpi-today">12</p>
+        <p class="text-xs text-slate-500">+3 vs ontem</p>
+      </div>
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <p class="text-xs text-slate-500">Pendentes de Assinatura</p>
+        <p class="mt-1 text-2xl font-semibold text-brand-green" id="kpi-pending">8</p>
+        <div class="mt-2 h-2 w-full bg-brand-beige rounded">
+          <div class="h-2 bg-brand-green rounded" style="width: 55%"></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <p class="text-xs text-slate-500">Laudos Gerados (7d)</p>
+        <p class="mt-1 text-2xl font-semibold text-brand-green" id="kpi-laudos">37</p>
+        <p class="text-xs text-slate-500">• ASO: 24 • Pronto socorro: 13</p>
+      </div>
+      <div class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <p class="text-xs text-slate-500">Tempo médio até DP</p>
+        <p class="mt-1 text-2xl font-semibold text-brand-green" id="kpi-avg">1.8d</p>
+        <p class="text-xs text-slate-500">meta &lt; 2.0d</p>
+      </div>
+    </section>
+
+    <!-- Ações rápidas -->
+    <section class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="/cadastro" class="group bg-white rounded-xl border border-brand-beige p-4 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <h3 class="font-medium text-slate-700">Cadastrar Funcionário</h3>
+          <span class="text-brand-green group-hover:translate-x-0.5 transition">→</span>
+        </div>
+        <p class="mt-1 text-sm text-slate-500">Dados pessoais, cargo, setor...</p>
+      </a>
+      <a href="/laudos" class="group bg-white rounded-xl border border-brand-beige p-4 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <h3 class="font-medium text-slate-700">Laudos Médicos</h3>
+          <span class="text-brand-green group-hover:translate-x-0.5 transition">→</span>
+        </div>
+        <p class="mt-1 text-sm text-slate-500">ASO e pronto socorro</p>
+      </a>
+      <a href="/assinaturas" class="group bg-white rounded-xl border border-brand-beige p-4 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <h3 class="font-medium text-slate-700">Fluxo de Assinaturas</h3>
+          <span class="text-brand-green group-hover:translate-x-0.5 transition">→</span>
+        </div>
+        <p class="mt-1 text-sm text-slate-500">Colaborador → Médico → Superintendent…</p>
+      </a>
+      <a href="/pessoal" class="group bg-white rounded-xl border border-brand-beige p-4 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <h3 class="font-medium text-slate-700">Divisão de Pessoal</h3>
+          <span class="text-brand-green group-hover:translate-x-0.5 transition">→</span>
+        </div>
+        <p class="mt-1 text-sm text-slate-500">Encaminhamento final</p>
+      </a>
+    </section>
+
+    <!-- Conteúdo em 2 colunas -->
+    <section class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Linha do tempo do fluxo -->
+      <div class="lg:col-span-1 bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+        <h3 class="font-semibold text-slate-700">Fluxo de Assinaturas (visão geral)</h3>
+        <ol class="mt-4 relative border-s border-brand-beige space-y-6 pl-6">
+          <li class="relative">
+            <span class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-brand-green text-white grid place-items-center text-xs">1</span>
+            <p class="text-sm font-medium text-slate-700">Colaborador</p>
+            <p class="text-xs text-slate-500">Cadastro e aceite inicial</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-brand-green text-white grid place-items-center text-xs">2</span>
+            <p class="text-sm font-medium text-slate-700">Médico</p>
+            <p class="text-xs text-slate-500">ASO / laudo de pronto socorro</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-brand-green text-white grid place-items-center text-xs">3</span>
+            <p class="text-sm font-medium text-slate-700">Superintendente</p>
+            <p class="text-xs text-slate-500">Autorização máxima</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-brand-green text-white grid place-items-center text-xs">4</span>
+            <p class="text-sm font-medium text-slate-700">Divisão de Pessoal</p>
+            <p class="text-xs text-slate-500">Efetivação de salário e benefícios</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Tabela de últimos cadastros -->
+      <div class="lg:col-span-2 bg-white rounded-xl border border-brand-beige p-4 shadow-sm overflow-hidden">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-slate-700">Últimos cadastros</h3>
+          <div class="flex items-center gap-2">
+            <button class="text-sm px-3 py-1.5 rounded-md border border-brand-beige hover:bg-brand-beige/60" id="btn-export">Exportar CSV</button>
+            <a href="/cadastro" class="text-sm px-3 py-1.5 rounded-md bg-brand-green text-white hover:bg-green-800">Novo</a>
+          </div>
+        </div>
+
+        <div class="mt-3 overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr class="text-left bg-brand-beige">
+                <th class="px-3 py-2 font-medium text-slate-700">Nome</th>
+                <th class="px-3 py-2 font-medium text-slate-700">CPF</th>
+                <th class="px-3 py-2 font-medium text-slate-700">Cargo</th>
+                <th class="px-3 py-2 font-medium text-slate-700">Setor</th>
+                <th class="px-3 py-2 font-medium text-slate-700">Status</th>
+                <th class="px-3 py-2 font-medium text-slate-700 text-right">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbl-body">
+              <!-- Linhas mockadas para visualização -->
+              <tr class="border-t border-brand-beige">
+                <td class="px-3 py-2">Ana Souza</td>
+                <td class="px-3 py-2">***.***.***-12</td>
+                <td class="px-3 py-2">Assistente RH</td>
+                <td class="px-3 py-2">DP</td>
+                <td class="px-3 py-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-amber-100 text-amber-800">Médico</span>
+                </td>
+                <td class="px-3 py-2 text-right">
+                  <button class="text-brand-green hover:underline">Ver</button>
+                </td>
+              </tr>
+              <tr class="border-t border-brand-beige">
+                <td class="px-3 py-2">Bruno Lima</td>
+                <td class="px-3 py-2">***.***.***-45</td>
+                <td class="px-3 py-2">Operador</td>
+                <td class="px-3 py-2">Produção</td>
+                <td class="px-3 py-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-green-100 text-green-800">DP</span>
+                </td>
+                <td class="px-3 py-2 text-right">
+                  <button class="text-brand-green hover:underline">Ver</button>
+                </td>
+              </tr>
+              <tr class="border-t border-brand-beige">
+                <td class="px-3 py-2">Carla Nunes</td>
+                <td class="px-3 py-2">***.***.***-88</td>
+                <td class="px-3 py-2">Enfermeira</td>
+                <td class="px-3 py-2">Saúde</td>
+                <td class="px-3 py-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-blue-100 text-blue-800">Superint.</span>
+                </td>
+                <td class="px-3 py-2 text-right">
+                  <button class="text-brand-green hover:underline">Ver</button>
+                </td>
+              </tr>
+              <tr class="border-t border-brand-beige">
+                <td class="px-3 py-2">Diego Araújo</td>
+                <td class="px-3 py-2">***.***.***-03</td>
+                <td class="px-3 py-2">Téc. Segurança</td>
+                <td class="px-3 py-2">SSMA</td>
+                <td class="px-3 py-2">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-red-100 text-red-800">Colab.</span>
+                </td>
+                <td class="px-3 py-2 text-right">
+                  <button class="text-brand-green hover:underline">Ver</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginação (visual) -->
+        <div class="mt-3 flex items-center justify-between">
+          <p class="text-xs text-slate-500">Mostrando 1–4 de 4</p>
+          <div class="flex items-center gap-1">
+            <button class="px-2 py-1 rounded border border-brand-beige hover:bg-brand-beige/60">«</button>
+            <button class="px-2 py-1 rounded border border-brand-beige bg-brand-beige">1</button>
+            <button class="px-2 py-1 rounded border border-brand-beige hover:bg-brand-beige/60">2</button>
+            <button class="px-2 py-1 rounded border border-brand-beige hover:bg-brand-beige/60">»</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

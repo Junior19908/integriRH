@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cadastro Completo — IntegriRH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: "#2e7d32", beige: "#f5f2e7" }
+          }
+        }
+      }
+    }
+    
+  </script>
+  <style>
+  .form-label {
+    @apply block text-sm font-medium text-slate-600 mb-1;
+  }
+  .form-input {
+    @apply w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-2 text-slate-700
+           focus:outline-none focus:ring-2 focus:ring-brand-green/50 focus:border-brand-green;
+  }
+  .form-select {
+    @apply form-input pr-8;
+  }
+  .form-textarea {
+    @apply form-input;
+  }
+</style>
+
+</head>
+<body class="min-h-full bg-brand-beige">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand-beige">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-brand-green text-white font-bold grid place-items-center">IR</div>
+        <div>
+          <h1 class="text-lg font-semibold text-brand-green leading-none">IntegriRH</h1>
+          <p class="text-xs text-slate-500 leading-none">Cadastro Completo</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-3">
+        <a href="/dashboard" class="text-sm text-slate-700 hover:text-brand-green">Início</a>
+        <a href="/cadastro" class="text-sm text-brand-green font-medium">Cadastro</a>
+        <a href="/laudos" class="text-sm text-slate-700 hover:text-brand-green">Laudos</a>
+        <a href="/assinaturas" class="text-sm text-slate-700 hover:text-brand-green">Assinaturas</a>
+        <a href="/pessoal" class="text-sm text-slate-700 hover:text-brand-green">Pessoal</a>
+      </nav>
+      <div class="w-9 h-9 rounded-full bg-brand-green/10 grid place-items-center text-brand-green font-semibold">JV</div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <form class="space-y-6 bg-white rounded-xl border border-brand-beige p-6 shadow-sm">
+      <!-- Dados Pessoais -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Dados Pessoais</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input placeholder="Nome completo*" class="input" />
+          <input placeholder="CPF*" class="input" />
+          <input placeholder="RG" class="input" />
+          <input placeholder="Órgão Emissor" class="input" />
+          <input placeholder="UF" class="input" />
+          <input type="date" placeholder="Data de nascimento" class="input" />
+          <select class="input"><option>Sexo</option><option>Masculino</option><option>Feminino</option><option>Outro</option></select>
+          <select class="input"><option>Estado civil</option><option>Solteiro(a)</option><option>Casado(a)</option><option>Divorciado(a)</option><option>Viúvo(a)</option></select>
+          <input placeholder="Nacionalidade" class="input" />
+          <input placeholder="Naturalidade" class="input" />
+          <input placeholder="Nome da mãe" class="input md:col-span-2" />
+          <input placeholder="Nome do pai" class="input md:col-span-2" />
+        </div>
+      </section>
+
+      <!-- Endereço -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Endereço</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <input placeholder="CEP" class="input" />
+          <input placeholder="Logradouro" class="input md:col-span-2" />
+          <input placeholder="Número" class="input" />
+          <input placeholder="Complemento" class="input" />
+          <input placeholder="Bairro" class="input" />
+          <input placeholder="Cidade" class="input" />
+          <input placeholder="Estado" class="input" />
+        </div>
+      </section>
+
+      <!-- Contatos -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Contatos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="tel" placeholder="Telefone fixo" class="input" />
+          <input type="tel" placeholder="Celular" class="input" />
+          <input type="email" placeholder="E-mail pessoal" class="input" />
+          <input type="email" placeholder="E-mail corporativo" class="input" />
+        </div>
+      </section>
+
+      <!-- Dados Contratuais -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Dados Contratuais</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input placeholder="Matrícula interna" class="input" />
+          <input type="date" placeholder="Data de admissão" class="input" />
+          <input placeholder="Cargo" class="input" />
+          <input placeholder="Função" class="input" />
+          <input placeholder="Setor" class="input" />
+          <input placeholder="Centro de Custo" class="input" />
+          <select class="input"><option>Tipo de contrato</option><option>CLT</option><option>Estágio</option><option>Terceirizado</option></select>
+          <select class="input"><option>Jornada</option><option>Integral</option><option>Parcial</option><option>Escala</option></select>
+          <input type="number" placeholder="Salário (R$)" class="input" />
+          <label class="flex items-center gap-2 col-span-3">
+            <input type="checkbox" /> Vale-Transporte
+          </label>
+          <label class="flex items-center gap-2 col-span-3">
+            <input type="checkbox" /> Vale Alimentação / Refeição
+          </label>
+          <label class="flex items-center gap-2 col-span-3">
+            <input type="checkbox" /> Plano de Saúde
+          </label>
+        </div>
+      </section>
+
+      <!-- Documentos -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Documentos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input placeholder="PIS/PASEP" class="input" />
+          <input placeholder="Título de Eleitor (número)" class="input" />
+          <input placeholder="Zona" class="input" />
+          <input placeholder="Seção" class="input" />
+          <input placeholder="CTPS (número)" class="input" />
+          <input placeholder="Série" class="input" />
+          <input placeholder="UF CTPS" class="input" />
+          <input placeholder="CNH (número)" class="input" />
+          <input placeholder="Categoria" class="input" />
+          <input type="date" placeholder="Validade CNH" class="input" />
+          <input placeholder="Certificado Militar" class="input" />
+        </div>
+      </section>
+
+      <!-- Saúde -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Saúde / ASO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="date" placeholder="Exame admissional" class="input" />
+          <textarea rows="3" placeholder="Restrições médicas / Observações" class="input"></textarea>
+        </div>
+      </section>
+
+      <!-- Emergência -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Contato de Emergência</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input placeholder="Nome" class="input" />
+          <input placeholder="Parentesco" class="input" />
+          <input placeholder="Telefone" class="input" />
+        </div>
+      </section>
+
+      <!-- Observações -->
+      <section>
+        <h2 class="text-lg font-semibold text-slate-700 mb-3">Observações</h2>
+        <textarea rows="4" placeholder="Observações adicionais" class="input w-full"></textarea>
+      </section>
+
+      <!-- Ações -->
+      <div class="flex justify-end gap-2">
+        <a href="/dashboard" class="px-4 py-2 rounded-lg border border-brand-beige hover:bg-brand-beige/60">Cancelar</a>
+        <button type="button" class="px-4 py-2 rounded-lg bg-brand-green text-white hover:bg-green-800">Salvar (mock)</button>
+      </div>
+    </form>
+  </main>
+
+  <style>
+    .input { @apply p-2.5 rounded-lg border border-brand-beige focus:ring-2 focus:ring-brand-green/30; }
+  </style>
+</body>
+</html>

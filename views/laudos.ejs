@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Laudos — IntegriRH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: "#2e7d32", beige: "#f5f2e7" }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-full bg-brand-beige">
+  <!-- Topbar -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-brand-beige">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-brand-green text-white font-bold grid place-items-center">IR</div>
+        <div>
+          <h1 class="text-lg font-semibold text-brand-green leading-none">IntegriRH</h1>
+          <p class="text-xs text-slate-500 leading-none">Laudos</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-3">
+        <a href="/dashboard" class="text-sm text-slate-700 hover:text-brand-green">Início</a>
+        <a href="/cadastro" class="text-sm text-slate-700 hover:text-brand-green">Cadastro</a>
+        <a href="/laudos" class="text-sm text-brand-green font-medium">Laudos</a>
+        <a href="/assinaturas" class="text-sm text-slate-700 hover:text-brand-green">Assinaturas</a>
+        <a href="/pessoal" class="text-sm text-slate-700 hover:text-brand-green">Pessoal</a>
+      </nav>
+      <div class="w-9 h-9 rounded-full bg-brand-green/10 grid place-items-center text-brand-green font-semibold">JV</div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <!-- Filtros (visuais) -->
+    <section class="bg-white rounded-xl border border-brand-beige p-4 shadow-sm">
+      <form class="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <input class="p-2.5 rounded-lg border border-brand-beige" placeholder="Nome/CPF" />
+        <select class="p-2.5 rounded-lg border border-brand-beige">
+          <option>Tipo de Laudo</option>
+          <option>ASO Admissional</option>
+          <option>ASO Periódico</option>
+          <option>ASO Demissional</option>
+          <option>Pronto Socorro</option>
+        </select>
+        <input type="date" class="p-2.5 rounded-lg border border-brand-beige" />
+        <input type="date" class="p-2.5 rounded-lg border border-brand-beige" />
+        <div class="md:col-span-4 flex items-center justify-end gap-2">
+          <button type="button" class="px-4 py-2 rounded-lg border border-brand-beige hover:bg-brand-beige/60">Limpar</button>
+          <button type="button" class="px-4 py-2 rounded-lg bg-brand-green text-white hover:bg-green-800">Filtrar (mock)</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Lista de laudos (mock) -->
+    <section class="mt-6 bg-white rounded-xl border border-brand-beige p-4 shadow-sm overflow-hidden">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-slate-700">Resultados</h3>
+        <div class="flex items-center gap-2">
+          <button class="px-3 py-1.5 rounded-md border border-brand-beige hover:bg-brand-beige/60">Exportar PDF</button>
+          <button class="px-3 py-1.5 rounded-md bg-brand-green text-white hover:bg-green-800">Novo Laudo</button>
+        </div>
+      </div>
+
+      <div class="mt-3 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="text-left bg-brand-beige">
+              <th class="px-3 py-2 font-medium text-slate-700">Colaborador</th>
+              <th class="px-3 py-2 font-medium text-slate-700">Tipo</th>
+              <th class="px-3 py-2 font-medium text-slate-700">Data</th>
+              <th class="px-3 py-2 font-medium text-slate-700">Status</th>
+              <th class="px-3 py-2 font-medium text-slate-700 text-right">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-brand-beige">
+              <td class="px-3 py-2">Ana Souza</td>
+              <td class="px-3 py-2">ASO Admissional</td>
+              <td class="px-3 py-2">12/08/2025</td>
+              <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs bg-green-100 text-green-800">Concluído</span></td>
+              <td class="px-3 py-2 text-right">
+                <button class="text-brand-green hover:underline">Visualizar</button>
+              </td>
+            </tr>
+            <tr class="border-t border-brand-beige">
+              <td class="px-3 py-2">Bruno Lima</td>
+              <td class="px-3 py-2">Pronto Socorro</td>
+              <td class="px-3 py-2">10/08/2025</td>
+              <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs bg-amber-100 text-amber-800">Em análise</span></td>
+              <td class="px-3 py-2 text-right">
+                <button class="text-brand-green hover:underline">Visualizar</button>
+              </td>
+            </tr>
+            <tr class="border-t border-brand-beige">
+              <td class="px-3 py-2">Carla Nunes</td>
+              <td class="px-3 py-2">ASO Periódico</td>
+              <td class="px-3 py-2">08/08/2025</td>
+              <td class="px-3 py-2"><span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-800">Pendente</span></td>
+              <td class="px-3 py-2 text-right">
+                <button class="text-brand-green hover:underline">Visualizar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
